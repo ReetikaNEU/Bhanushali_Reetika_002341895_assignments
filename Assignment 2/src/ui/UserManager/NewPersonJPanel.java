@@ -4,6 +4,7 @@
  */
 package ui.UserManager;
 
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.PersonDirectory;
 
@@ -214,6 +215,11 @@ public class NewPersonJPanel extends javax.swing.JPanel {
 
         btnAddNewPerson.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         btnAddNewPerson.setText("Add New Person");
+        btnAddNewPerson.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewPersonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -435,7 +441,15 @@ public class NewPersonJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btnAddNewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewPersonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddNewPersonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
