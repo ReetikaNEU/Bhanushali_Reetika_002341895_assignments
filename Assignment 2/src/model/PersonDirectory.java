@@ -36,13 +36,19 @@ public class PersonDirectory {
        personList.remove(person);
    }
    
-   public Person searchPerson(String firstName) {
-       for (Person p : personList) {
-           if (p.getFirstName().contains(firstName)) {
-               return p;
-           }
-       }
-       return null;
-   }
+   
+   public Person searchPerson(String searchString) {
+    for (Person p : personList) {
+        // Check if the first name, last name, or street address (home or work) contains the search string
+        if (p.getFirstName().toLowerCase().contains(searchString.toLowerCase()) || 
+            p.getLastName().toLowerCase().contains(searchString.toLowerCase()) ||
+            (p.getHomeAddress() != null && p.getHomeAddress().getStreetName().toLowerCase().contains(searchString.toLowerCase())) ||
+            (p.getWorkAddress() != null && p.getWorkAddress().getStreetName().toLowerCase().contains(searchString.toLowerCase()))) 
+        {
+            return p;
+        }
+    }
+    return null;  // Return null if no match is found
+}
     
 }

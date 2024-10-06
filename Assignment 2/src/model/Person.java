@@ -101,5 +101,9 @@ public class Person {
         this.workAddress = workAddress;
     }
 
+    @Override
+    public String toString(){
+        return this.firstName;
+    }
         
 }

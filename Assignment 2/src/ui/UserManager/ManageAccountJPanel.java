@@ -70,6 +70,11 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         btnSearch.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnViewDetails.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnViewDetails.setText("View Details");
@@ -195,6 +200,27 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        
+            if (!txtSearchBox.getText().isBlank()) {
+        String searchString = txtSearchBox.getText();
+        Person foundPerson = personDirectory.searchPerson(searchString);
+        
+        if (foundPerson != null) {
+            ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, personDirectory, foundPerson);
+            userProcessContainer.add("ViewAccountJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Person not found. Please check the input and try again.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please type the input to view.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            
+    }//GEN-LAST:event_btnSearchActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -213,16 +239,16 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         
         for (Person p : personDirectory.getPersonList()) {
             Object[] row = new Object[6];
-            row[0] = p.getFirstName();
+            row[0] = p;
             row[1] = p.getLastName();
             
-//            Address HomeAddress = p.getHomeAddress();
-//            row[2] = HomeAddress.getCityName();
-//            row[3] = HomeAddress.getZipCode();
-//            
-//            Address WorkAddress = p.getWorkAddress();
-//            row[4] = WorkAddress.getCityName();
-//            row[5] = WorkAddress.getZipCode();
+            Address homeAddress = p.getHomeAddress();
+            row[2] = p.homeAddress.getCityName();
+            row[3] = p.homeAddress.getZipCode();
+            
+            Address workAddress = p.getWorkAddress();
+            row[4] = p.workAddress.getCityName();
+            row[5] = p.workAddress.getZipCode();
             
             model.addRow(row);
         }

@@ -5,7 +5,10 @@
 package ui.UserManager;
 
 import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Address;
 import model.Person;
 import model.PersonDirectory;
 
@@ -15,19 +18,18 @@ import model.PersonDirectory;
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
     
-    JPanel userProcessContainer;
-    PersonDirectory personDirectory;
-    Person person;
+    private JPanel userProcessContainer;
+    private PersonDirectory personDirectory;
+    private Person person;
 
     /**
      * Creates new form ViewAccountJPanel
      */
-    public ViewAccountJPanel(JPanel container, PersonDirectory directory, Person person) {
+    public ViewAccountJPanel(JPanel userProcessContainer, PersonDirectory directory, Person person) {
         initComponents();
         
-        userProcessContainer = container;
-        personDirectory = directory;
-        person = person;
+        this.userProcessContainer = userProcessContainer;
+        this.person = person;
         
         refreshTextFields();
         setViewMode();
@@ -116,6 +118,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
         btnSave.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         txtPhoneNumber.setForeground(new java.awt.Color(0, 0, 102));
 
@@ -239,9 +246,9 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
                 .addComponent(lblViewAccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 243, Short.MAX_VALUE)
+                .addGap(0, 233, Short.MAX_VALUE)
                 .addComponent(btnSave)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(btnUpdate)
                 .addGap(230, 230, 230))
             .addGroup(layout.createSequentialGroup()
@@ -450,12 +457,76 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-       
+       userProcessContainer.remove(this);
+        
+        Component[] panelStack = userProcessContainer.getComponents();
+        JPanel lastPanel = (JPanel) panelStack[panelStack.length -1];
+        ManageAccountJPanel manageAccountJPanel = (ManageAccountJPanel) lastPanel;
+        manageAccountJPanel.populateTable();
+        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
+        setEditMode();
     }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        
+        long socialSecurityNumber = Long.parseLong(txtSsn.getText());
+        int age = Integer.parseInt(txtAge.getText());
+        double salary = Double.parseDouble(txtSalary.getText());
+        char gender = txtGender.getText().charAt(0);
+        
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+        String dateOfBirth = txtDateOfBirth.getText();
+        
+        Address homeAddress = new Address();
+        homeAddress.setStreetName(txtStreetNameHomeAddress.getText());
+        homeAddress.setUnitNumber(txtUnitNumberHomeAddress.getText());
+        homeAddress.setCityName(txtCityNameHomeAddress.getText());
+        homeAddress.setStateName(txtStateNameHomeAddress.getText());
+        homeAddress.setZipCode(txtZipCodeHomeAddress.getText());
+        homeAddress.setPhoneNumber(txtPhoneNumberHomeAddress.getText());
+        
+        Address workAddress = new Address();
+        workAddress.setStreetName(txtStreetNameWorkAddress.getText());
+        workAddress.setUnitNumber(txtUnitNumberWorkAddress.getText());
+        workAddress.setCityName(txtCityNameWorkAddress.getText());
+        workAddress.setStateName(txtStateNameWorkAddress.getText());
+        workAddress.setZipCode(txtZipCodeWorkAddress.getText());
+        workAddress.setPhoneNumber(txtPhoneNumberWorkAddress.getText());
+        
+         if (firstName.isBlank() || lastName.isBlank() || phoneNumber.isBlank() || dateOfBirth.isBlank() || txtSsn.getText().isBlank()
+            || txtAge.getText().isBlank() || txtGender.getText().isBlank() || txtSalary.getText().isBlank() || txtStreetNameHomeAddress.getText().isBlank() || txtUnitNumberHomeAddress.getText().isBlank()
+            || txtCityNameHomeAddress.getText().isBlank() || txtStateNameHomeAddress.getText().isBlank() || txtZipCodeHomeAddress.getText().isBlank() 
+            || txtPhoneNumberHomeAddress.getText().isBlank() || txtStreetNameWorkAddress.getText().isBlank() || txtUnitNumberWorkAddress.getText().isBlank()
+            || txtCityNameWorkAddress.getText().isBlank() || txtStateNameWorkAddress.getText().isBlank() || txtZipCodeWorkAddress.getText().isBlank() 
+            || txtPhoneNumberWorkAddress.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(null, "All fields are mandatory.");
+            return;
+        }
+        
+        person.setFirstName(firstName);
+        person.setLastName(lastName);
+        person.setPhoneNumber(phoneNumber);
+        person.setDateOfBirth(dateOfBirth);
+        person.setSocialSecurityNumber(socialSecurityNumber);
+        person.setAge(age);
+        person.setGender(gender);
+        person.setHomeAddress(homeAddress);
+        person.setWorkAddress(workAddress);
+        
+        JOptionPane.showMessageDialog(null, "Account successfully updated.", "Warning", JOptionPane.WARNING_MESSAGE);
+        
+        setViewMode();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

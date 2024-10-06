@@ -159,94 +159,89 @@ public class MainJFrame extends javax.swing.JFrame {
 
 
     private void generateDemoData() {
-        
         Person person1 = personDirectory.addNewPerson();
         person1.setFirstName("Mansi");
         person1.setLastName("Doshi");
-        
+
         Address homeAddress1 = new Address();
         homeAddress1.setCityName("Mumbai");
         homeAddress1.setZipCode("400082");
         person1.setHomeAddress(homeAddress1);
-        
+
         Address workAddress1 = new Address();
         workAddress1.setCityName("Pune");
         workAddress1.setZipCode("789456");
         person1.setWorkAddress(workAddress1);
-        
-        
+
         Person person2 = personDirectory.addNewPerson();
         person2.setFirstName("Janvi");
         person2.setLastName("Shah");
-        
+
         Address homeAddress2 = new Address();
         homeAddress2.setCityName("Boston");
         homeAddress2.setZipCode("201304");
-        person1.setHomeAddress(homeAddress2);
-        
+        person2.setHomeAddress(homeAddress2);
+
         Address workAddress2 = new Address();
         workAddress2.setCityName("New York");
         workAddress2.setZipCode("789456");
         person2.setWorkAddress(workAddress2);
-        
-        
+
         Person person3 = personDirectory.addNewPerson();
         person3.setFirstName("Meera");
         person3.setLastName("Mehta");
-        
+
         Address homeAddress3 = new Address();
         homeAddress3.setCityName("Los Angeles");
         homeAddress3.setZipCode("890082");
         person3.setHomeAddress(homeAddress3);
-        
+
         Address workAddress3 = new Address();
         workAddress3.setCityName("Chicago");
         workAddress3.setZipCode("258963");
         person3.setWorkAddress(workAddress3);
-        
+
         Person person4 = personDirectory.addNewPerson();
         person4.setFirstName("Reetika");
         person4.setLastName("Bhanushali");
-        
+
         Address homeAddress4 = new Address();
         homeAddress4.setCityName("Houston");
         homeAddress4.setZipCode("579456");
         person4.setHomeAddress(homeAddress4);
-        
+
         Address workAddress4 = new Address();
         workAddress4.setCityName("Pheonix");
         workAddress4.setZipCode("367412");
-        person1.setWorkAddress(workAddress4);
-        
+        person4.setWorkAddress(workAddress4);  
+
         Person person5 = personDirectory.addNewPerson();
         person5.setFirstName("Rajvi");
         person5.setLastName("Patel");
-        
+
         Address homeAddress5 = new Address();
         homeAddress5.setCityName("Philadelphia");
         homeAddress5.setZipCode("548961");
         person5.setHomeAddress(homeAddress5);
-        
+
         Address workAddress5 = new Address();
         workAddress5.setCityName("San Antonio");
         workAddress5.setZipCode("357469");
         person5.setWorkAddress(workAddress5);
-        
-        
+
         Person person6 = personDirectory.addNewPerson();
         person6.setFirstName("Shrusti");
         person6.setLastName("Suvarna");
-        
+
         Address homeAddress6 = new Address();
         homeAddress6.setCityName("San Diego");
         homeAddress6.setZipCode("397845");
         person6.setHomeAddress(homeAddress6);
-        
+
         Address workAddress6 = new Address();
         workAddress6.setCityName("San Jose");
         workAddress6.setZipCode("885544");
         person6.setWorkAddress(workAddress6);
-        
-        
+    
     }
 }
