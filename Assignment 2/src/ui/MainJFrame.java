@@ -69,7 +69,7 @@ public class MainJFrame extends javax.swing.JFrame {
             topJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(topJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnPersonMng, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                .addComponent(btnPersonMng, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
                 .addContainerGap())
         );
         topJPanelLayout.setVerticalGroup(
@@ -92,14 +92,14 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(splitPane)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 517, Short.MAX_VALUE)
+                .addComponent(splitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -159,89 +159,150 @@ public class MainJFrame extends javax.swing.JFrame {
 
 
     private void generateDemoData() {
+        // Person 1
         Person person1 = personDirectory.addNewPerson();
         person1.setFirstName("Mansi");
         person1.setLastName("Doshi");
+        person1.setPhoneNumber("1234567890");
+        person1.setDateOfBirth("1990-01-01");
+        person1.setSocialSecurityNumber(123456789L);
+        person1.setAge(32);
+        person1.setGender('F');
+        person1.setSalary(85000.00);
 
         Address homeAddress1 = new Address();
+        homeAddress1.setStreetName("Main St");
+        homeAddress1.setUnitNumber("101");
         homeAddress1.setCityName("Mumbai");
+        homeAddress1.setStateName("Maharashtra");
         homeAddress1.setZipCode("400082");
+        homeAddress1.setPhoneNumber("9876543210");
         person1.setHomeAddress(homeAddress1);
 
         Address workAddress1 = new Address();
+        workAddress1.setStreetName("Corporate Park");
+        workAddress1.setUnitNumber("102");
         workAddress1.setCityName("Pune");
+        workAddress1.setStateName("Maharashtra");
         workAddress1.setZipCode("789456");
+        workAddress1.setPhoneNumber("9123456789");
         person1.setWorkAddress(workAddress1);
 
+        // Person 2
         Person person2 = personDirectory.addNewPerson();
         person2.setFirstName("Janvi");
         person2.setLastName("Shah");
+        person2.setPhoneNumber("1234567891");
+        person2.setDateOfBirth("1991-02-02");
+        person2.setSocialSecurityNumber(123456788L);
+        person2.setAge(31);
+        person2.setGender('F');
+        person2.setSalary(90000.00);
 
         Address homeAddress2 = new Address();
+        homeAddress2.setStreetName("Broadway");
+        homeAddress2.setUnitNumber("202");
         homeAddress2.setCityName("Boston");
+        homeAddress2.setStateName("Massachusetts");
         homeAddress2.setZipCode("201304");
+        homeAddress2.setPhoneNumber("9876543211");
         person2.setHomeAddress(homeAddress2);
 
         Address workAddress2 = new Address();
+        workAddress2.setStreetName("Wall St");
+        workAddress2.setUnitNumber("203");
         workAddress2.setCityName("New York");
+        workAddress2.setStateName("New York");
         workAddress2.setZipCode("789456");
+        workAddress2.setPhoneNumber("9123456781");
         person2.setWorkAddress(workAddress2);
 
+        // Person 3
         Person person3 = personDirectory.addNewPerson();
         person3.setFirstName("Meera");
         person3.setLastName("Mehta");
+        person3.setPhoneNumber("1234567892");
+        person3.setDateOfBirth("1989-03-03");
+        person3.setSocialSecurityNumber(123456787L);
+        person3.setAge(33);
+        person3.setGender('F');
+        person3.setSalary(95000.00);
 
         Address homeAddress3 = new Address();
+        homeAddress3.setStreetName("Sunset Blvd");
+        homeAddress3.setUnitNumber("303");
         homeAddress3.setCityName("Los Angeles");
+        homeAddress3.setStateName("California");
         homeAddress3.setZipCode("890082");
+        homeAddress3.setPhoneNumber("9876543212");
         person3.setHomeAddress(homeAddress3);
 
         Address workAddress3 = new Address();
+        workAddress3.setStreetName("Magnificent Mile");
+        workAddress3.setUnitNumber("304");
         workAddress3.setCityName("Chicago");
+        workAddress3.setStateName("Illinois");
         workAddress3.setZipCode("258963");
+        workAddress3.setPhoneNumber("9123456782");
         person3.setWorkAddress(workAddress3);
 
+        // Person 4
         Person person4 = personDirectory.addNewPerson();
         person4.setFirstName("Reetika");
         person4.setLastName("Bhanushali");
+        person4.setPhoneNumber("1234567893");
+        person4.setDateOfBirth("1992-04-04");
+        person4.setSocialSecurityNumber(123456786L);
+        person4.setAge(30);
+        person4.setGender('F');
+        person4.setSalary(92000.00);
 
         Address homeAddress4 = new Address();
+        homeAddress4.setStreetName("Elm St");
+        homeAddress4.setUnitNumber("404");
         homeAddress4.setCityName("Houston");
+        homeAddress4.setStateName("Texas");
         homeAddress4.setZipCode("579456");
+        homeAddress4.setPhoneNumber("9876543213");
         person4.setHomeAddress(homeAddress4);
 
         Address workAddress4 = new Address();
-        workAddress4.setCityName("Pheonix");
+        workAddress4.setStreetName("Camelback Rd");
+        workAddress4.setUnitNumber("405");
+        workAddress4.setCityName("Phoenix");
+        workAddress4.setStateName("Arizona");
         workAddress4.setZipCode("367412");
-        person4.setWorkAddress(workAddress4);  
+        workAddress4.setPhoneNumber("9123456783");
+        person4.setWorkAddress(workAddress4);
 
+        // Person 5
         Person person5 = personDirectory.addNewPerson();
         person5.setFirstName("Rajvi");
         person5.setLastName("Patel");
+        person5.setPhoneNumber("1234567894");
+        person5.setDateOfBirth("1993-05-05");
+        person5.setSocialSecurityNumber(123456785L);
+        person5.setAge(29);
+        person5.setGender('F');
+        person5.setSalary(88000.00);
 
         Address homeAddress5 = new Address();
+        homeAddress5.setStreetName("Market St");
+        homeAddress5.setUnitNumber("505");
         homeAddress5.setCityName("Philadelphia");
+        homeAddress5.setStateName("Pennsylvania");
         homeAddress5.setZipCode("548961");
+        homeAddress5.setPhoneNumber("9876543214");
         person5.setHomeAddress(homeAddress5);
 
         Address workAddress5 = new Address();
+        workAddress5.setStreetName("River Walk");
+        workAddress5.setUnitNumber("506");
         workAddress5.setCityName("San Antonio");
+        workAddress5.setStateName("Texas");
         workAddress5.setZipCode("357469");
+        workAddress5.setPhoneNumber("9123456784");
         person5.setWorkAddress(workAddress5);
-
-        Person person6 = personDirectory.addNewPerson();
-        person6.setFirstName("Shrusti");
-        person6.setLastName("Suvarna");
-
-        Address homeAddress6 = new Address();
-        homeAddress6.setCityName("San Diego");
-        homeAddress6.setZipCode("397845");
-        person6.setHomeAddress(homeAddress6);
-
-        Address workAddress6 = new Address();
-        workAddress6.setCityName("San Jose");
-        workAddress6.setZipCode("885544");
-        person6.setWorkAddress(workAddress6);
-    
     }
+
 }
