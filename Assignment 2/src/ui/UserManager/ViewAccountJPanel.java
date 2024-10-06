@@ -5,18 +5,33 @@
 package ui.UserManager;
 
 import java.awt.CardLayout;
+import javax.swing.JPanel;
+import model.Person;
+import model.PersonDirectory;
 
 /**
  *
  * @author Reetika
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
+    
+    JPanel userProcessContainer;
+    PersonDirectory personDirectory;
+    Person person;
 
     /**
      * Creates new form ViewAccountJPanel
      */
-    public ViewAccountJPanel() {
+    public ViewAccountJPanel(JPanel container, PersonDirectory directory, Person person) {
         initComponents();
+        
+        userProcessContainer = container;
+        personDirectory = directory;
+        person = person;
+        
+        refreshTextFields();
+        setViewMode();
+        
     }
 
     /**
@@ -79,6 +94,11 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
         btnUpdate.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         lblViewAccount.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
         lblViewAccount.setForeground(java.awt.Color.white);
@@ -433,6 +453,10 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -482,4 +506,86 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtZipCodeHomeAddress;
     private javax.swing.JTextField txtZipCodeWorkAddress;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTextFields() {
+        
+        txtFirstName.setText(person.getFirstName());
+        txtLastName.setText(person.getLastName());
+        txtPhoneNumber.setText(person.getPhoneNumber());
+        txtSalary.setText(String.valueOf(person.getSalary()));
+        txtGender.setText(String.valueOf(person.getGender()));
+        txtDateOfBirth.setText(person.getDateOfBirth());
+        txtSsn.setText(String.valueOf(person.getSocialSecurityNumber()));
+        txtAge.setText(String.valueOf(person.getAge()));
+        txtStreetNameHomeAddress.setText(person.getHomeAddress().getStreetName());
+        txtUnitNumberHomeAddress.setText(person.getHomeAddress().getUnitNumber());
+        txtStateNameHomeAddress.setText(person.getHomeAddress().getStateName());
+        txtCityNameHomeAddress.setText(person.getHomeAddress().getCityName());
+        txtZipCodeHomeAddress.setText(person.getHomeAddress().getZipCode());
+        txtPhoneNumberHomeAddress.setText(person.getHomeAddress().getPhoneNumber());
+        txtStreetNameWorkAddress.setText(person.getWorkAddress().getStreetName());
+        txtUnitNumberWorkAddress.setText(person.getWorkAddress().getUnitNumber());
+        txtStateNameWorkAddress.setText(person.getWorkAddress().getStateName());
+        txtCityNameWorkAddress.setText(person.getWorkAddress().getCityName());
+        txtZipCodeWorkAddress.setText(person.getWorkAddress().getZipCode());
+        txtPhoneNumberWorkAddress.setText(person.getWorkAddress().getPhoneNumber());
+        
+    }
+    
+    private void setViewMode() {
+             
+        txtFirstName.setEnabled(false);
+        txtLastName.setEnabled(false);
+        txtPhoneNumber.setEnabled(false);
+        txtSalary.setEnabled(false);
+        txtGender.setEnabled(false);
+        txtDateOfBirth.setEnabled(false);
+        txtSsn.setEnabled(false);
+        txtAge.setEnabled(false);
+        txtStreetNameHomeAddress.setEnabled(false);
+        txtUnitNumberHomeAddress.setEnabled(false);
+        txtStateNameHomeAddress.setEnabled(false);
+        txtCityNameHomeAddress.setEnabled(false);
+        txtZipCodeHomeAddress.setEnabled(false);
+        txtPhoneNumberHomeAddress.setEnabled(false);
+        txtStreetNameWorkAddress.setEnabled(false);
+        txtUnitNumberWorkAddress.setEnabled(false);
+        txtStateNameWorkAddress.setEnabled(false);
+        txtCityNameWorkAddress.setEnabled(false);
+        txtZipCodeWorkAddress.setEnabled(false);
+        txtPhoneNumberWorkAddress.setEnabled(false);
+                
+        
+        btnSave.setEnabled(false);
+        btnUpdate.setEnabled(true);
+        
+    }
+    
+    private void setEditMode() {
+        
+        txtFirstName.setEnabled(true);
+        txtLastName.setEnabled(true);
+        txtPhoneNumber.setEnabled(true);
+        txtSalary.setEnabled(true);
+        txtGender.setEnabled(true);
+        txtDateOfBirth.setEnabled(true);
+        txtSsn.setEnabled(true);
+        txtAge.setEnabled(true);
+        txtStreetNameHomeAddress.setEnabled(true);
+        txtUnitNumberHomeAddress.setEnabled(true);
+        txtStateNameHomeAddress.setEnabled(true);
+        txtCityNameHomeAddress.setEnabled(true);
+        txtZipCodeHomeAddress.setEnabled(true);
+        txtPhoneNumberHomeAddress.setEnabled(true);
+        txtStreetNameWorkAddress.setEnabled(true);
+        txtUnitNumberWorkAddress.setEnabled(true);
+        txtStateNameWorkAddress.setEnabled(true);
+        txtCityNameWorkAddress.setEnabled(true);
+        txtZipCodeWorkAddress.setEnabled(true);
+        txtPhoneNumberWorkAddress.setEnabled(true);
+        
+        btnSave.setEnabled(true);
+        btnUpdate.setEnabled(false);
+    }
+
 }

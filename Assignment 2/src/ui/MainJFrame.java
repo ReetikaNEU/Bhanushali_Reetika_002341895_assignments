@@ -204,7 +204,6 @@ public class MainJFrame extends javax.swing.JFrame {
         workAddress3.setZipCode("258963");
         person3.setWorkAddress(workAddress3);
         
-        
         Person person4 = personDirectory.addNewPerson();
         person4.setFirstName("Reetika");
         person4.setLastName("Bhanushali");
@@ -218,7 +217,6 @@ public class MainJFrame extends javax.swing.JFrame {
         workAddress4.setCityName("Pheonix");
         workAddress4.setZipCode("367412");
         person1.setWorkAddress(workAddress4);
-        
         
         Person person5 = personDirectory.addNewPerson();
         person5.setFirstName("Rajvi");

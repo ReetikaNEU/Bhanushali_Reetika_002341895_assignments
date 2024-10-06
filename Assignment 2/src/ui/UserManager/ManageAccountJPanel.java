@@ -89,9 +89,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         txtSearchBox.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
-        jScrollPane1.setBackground(new java.awt.Color(102, 102, 102));
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblPersons.setBackground(new java.awt.Color(0, 51, 102));
         tblPersons.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -179,7 +178,21 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
     private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblPersons.getSelectedRow();
         
+        if (selectedRow >= 0) {
+            Person selectedPerson = (Person) tblPersons.getValueAt(selectedRow, 0);
+            
+            ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, personDirectory, selectedPerson);
+            userProcessContainer.add("ViewAccountJPanel", panel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+            
+            // beyond this line code will execute after you go back to this JPanel
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select an person from the list to view", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnViewDetailsActionPerformed
 
 
@@ -203,13 +216,13 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             row[0] = p.getFirstName();
             row[1] = p.getLastName();
             
-            Address HomeaAddress = p.getHomeAddress();
-            row[2] = HomeaAddress.getCityName();
-            row[3] = HomeaAddress.getZipCode();
-            
-            Address WorkAddress = p.getWorkAddress();
-            row[4] = WorkAddress.getCityName();
-            row[5] = WorkAddress.getZipCode();
+//            Address HomeAddress = p.getHomeAddress();
+//            row[2] = HomeAddress.getCityName();
+//            row[3] = HomeAddress.getZipCode();
+//            
+//            Address WorkAddress = p.getWorkAddress();
+//            row[4] = WorkAddress.getCityName();
+//            row[5] = WorkAddress.getZipCode();
             
             model.addRow(row);
         }

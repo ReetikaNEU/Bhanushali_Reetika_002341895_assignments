@@ -18,8 +18,8 @@ public class Person {
     private int age;
     private char gender;
     private double salary;
-    private Address homeAddress;
-    private Address workAddress;
+    public Address homeAddress;
+    public Address workAddress;
     
     public String getFirstName() {
         return firstName;

@@ -496,7 +496,7 @@ public class NewPersonJPanel extends javax.swing.JPanel {
             salary = Double.parseDouble(txtSalary.getText());
             gender = txtGender.getText().charAt(0);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Please check the balance input.", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please check the input.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
