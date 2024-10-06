@@ -5,7 +5,11 @@
 package ui.UserManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Address;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -25,6 +29,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         
         userProcessContainer = container;
         personDirectory = directory;
+        
+        populateTable();
         
     }
 
@@ -67,9 +73,19 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         btnViewDetails.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnViewDetails.setText("View Details");
+        btnViewDetails.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewDetailsActionPerformed(evt);
+            }
+        });
 
         btnDeleteAccount.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         btnDeleteAccount.setText("Delete Account");
+        btnDeleteAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteAccountActionPerformed(evt);
+            }
+        });
 
         txtSearchBox.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
@@ -144,6 +160,28 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnDeleteAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAccountActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblPersons.getSelectedRow();
+        
+        if (selectedRow >= 0) {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected Person?", "Warning", dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION){
+                Person selectedPerson = (Person) tblPersons.getValueAt(selectedRow, 0);
+                personDirectory.deletePerson(selectedPerson);
+                populateTable();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select an Person from the list.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDeleteAccountActionPerformed
+
+    private void btnViewDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewDetailsActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnViewDetailsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -155,4 +193,27 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblPersons;
     private javax.swing.JTextField txtSearchBox;
     // End of variables declaration//GEN-END:variables
+
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblPersons.getModel();
+        model.setRowCount(0);
+        
+        for (Person p : personDirectory.getPersonList()) {
+            Object[] row = new Object[6];
+            row[0] = p.getFirstName();
+            row[1] = p.getLastName();
+            
+            Address HomeaAddress = p.getHomeAddress();
+            row[2] = HomeaAddress.getCityName();
+            row[3] = HomeaAddress.getZipCode();
+            
+            Address WorkAddress = p.getWorkAddress();
+            row[4] = WorkAddress.getCityName();
+            row[5] = WorkAddress.getZipCode();
+            
+            model.addRow(row);
+        }
+    }
+
+
 }

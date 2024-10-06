@@ -5,7 +5,10 @@
 package ui.UserManager;
 
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import model.Address;
+import model.Person;
 import model.PersonDirectory;
 
 /**
@@ -449,6 +452,90 @@ public class NewPersonJPanel extends javax.swing.JPanel {
 
     private void btnAddNewPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewPersonActionPerformed
         // TODO add your handling code here:
+        
+        long socialSecurityNumber;
+        int age;
+        char gender;
+        double salary;
+        
+        String firstName = txtFirstName.getText();
+        String lastName = txtLastName.getText();
+        String phoneNumber = txtPhoneNumber.getText();
+        String dateOfBirth = txtDateOfBirth.getText();
+        
+        Address homeAddress = new Address();
+        homeAddress.setStreetName(txtStreetNameHomeAddress.getText());
+        homeAddress.setUnitNumber(txtUnitNumberHomeAddress.getText());
+        homeAddress.setCityName(txtCityNameHomeAddress.getText());
+        homeAddress.setStateName(txtStateNameHomeAddress.getText());
+        homeAddress.setZipCode(txtZipCodeHomeAddress.getText());
+        homeAddress.setPhoneNumber(txtPhoneNumberHomeAddress.getText());
+        
+        Address workAddress = new Address();
+        workAddress.setStreetName(txtStreetNameWorkAddress.getText());
+        workAddress.setUnitNumber(txtUnitNumberWorkAddress.getText());
+        workAddress.setCityName(txtCityNameWorkAddress.getText());
+        workAddress.setStateName(txtStateNameWorkAddress.getText());
+        workAddress.setZipCode(txtZipCodeWorkAddress.getText());
+        workAddress.setPhoneNumber(txtPhoneNumberWorkAddress.getText());
+        
+        if (firstName.isBlank() || lastName.isBlank() || phoneNumber.isBlank() || dateOfBirth.isBlank() || txtSsn.getText().isBlank()
+            || txtAge.getText().isBlank() || txtGender.getText().isBlank() || txtSalary.getText().isBlank() || txtStreetNameHomeAddress.getText().isBlank() || txtUnitNumberHomeAddress.getText().isBlank()
+            || txtCityNameHomeAddress.getText().isBlank() || txtStateNameHomeAddress.getText().isBlank() || txtZipCodeHomeAddress.getText().isBlank() 
+            || txtPhoneNumberHomeAddress.getText().isBlank() || txtStreetNameWorkAddress.getText().isBlank() || txtUnitNumberWorkAddress.getText().isBlank()
+            || txtCityNameWorkAddress.getText().isBlank() || txtStateNameWorkAddress.getText().isBlank() || txtZipCodeWorkAddress.getText().isBlank() 
+            || txtPhoneNumberWorkAddress.getText().isBlank())
+        {
+            JOptionPane.showMessageDialog(this, "All fields are mandatory.", "Error", JOptionPane.ERROR_MESSAGE);
+            //pause until the user closes the dialog.
+            return;
+        }
+        try {
+            socialSecurityNumber = Long.parseLong(txtSsn.getText());
+            age = Integer.parseInt(txtAge.getText());
+            salary = Double.parseDouble(txtSalary.getText());
+            gender = txtGender.getText().charAt(0);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please check the balance input.", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Person p = personDirectory.addNewPerson();
+        
+        p.setFirstName(firstName);
+        p.setLastName(lastName);
+        p.setPhoneNumber(phoneNumber);
+        p.setDateOfBirth(dateOfBirth);
+        p.setSocialSecurityNumber(socialSecurityNumber);
+        p.setAge(age);
+        p.setGender(gender);
+        p.setSalary(salary);
+        p.setHomeAddress(homeAddress);
+        p.setWorkAddress(workAddress);
+        
+        
+        JOptionPane.showMessageDialog(this, "User Account successfully created.", "Information", JOptionPane.INFORMATION_MESSAGE);
+        
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtPhoneNumber.setText("");
+        txtDateOfBirth.setText("");
+        txtSsn.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtSalary.setText("");
+        txtStreetNameHomeAddress.setText("");
+        txtUnitNumberHomeAddress.setText("");
+        txtCityNameHomeAddress.setText("");
+        txtStateNameHomeAddress.setText("");
+        txtZipCodeHomeAddress.setText("");
+        txtPhoneNumberHomeAddress.setText("");
+        txtStreetNameWorkAddress.setText("");
+        txtUnitNumberWorkAddress.setText("");
+        txtCityNameWorkAddress.setText("");
+        txtStateNameWorkAddress.setText("");
+        txtZipCodeWorkAddress.setText("");
+        txtPhoneNumberWorkAddress.setText("");
     }//GEN-LAST:event_btnAddNewPersonActionPerformed
 
 
