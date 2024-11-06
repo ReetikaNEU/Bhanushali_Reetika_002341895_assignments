@@ -38,6 +38,7 @@ public class Department {
         name = n;
         mastercoursecatalog = new HashMap<>();
         coursecatalog = new CourseCatalog(this);
+        facultydirectory = new FacultyDirectory(this);
         studentdirectory = new StudentDirectory(this); //pass the department object so it stays linked to it
         persondirectory = new PersonDirectory();
         degree = new Degree("MSIS");
@@ -47,7 +48,7 @@ public class Department {
         degree.addCoreCourse(c);
         
     }
-public void addElectiveCourse(Course c){
+    public void addElectiveCourse(Course c){
         degree.addElectiveCourse(c);
         
     }
@@ -56,7 +57,9 @@ public void addElectiveCourse(Course c){
         return persondirectory;
 
     }
-
+    public FacultyDirectory getFacultyDirectory(){
+        return facultydirectory;
+    }
     public StudentDirectory getStudentDirectory() {
     return studentdirectory;
     }
@@ -107,13 +110,4 @@ public void addElectiveCourse(Course c){
         co.assignEmptySeat(cl);
 
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
 }

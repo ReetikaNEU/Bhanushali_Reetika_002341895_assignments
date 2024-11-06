@@ -16,7 +16,9 @@ public class StudentDirectory {
 
     Department department;
     ArrayList<StudentProfile> studentlist;
-
+    public ArrayList<StudentProfile> getStudentProfiles(){
+        return studentlist;
+    }
     public StudentDirectory(Department d) {
 
         department = d;

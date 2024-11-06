@@ -36,12 +36,8 @@ public class Course {
         return credits;
     
 }
-    public String getName() {
+    public String toString(){
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
     
 }

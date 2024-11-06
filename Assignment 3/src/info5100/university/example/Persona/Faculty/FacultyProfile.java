@@ -57,19 +57,9 @@ public class FacultyProfile {
         }
         return false;
     }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
     
-    @Override
-    public String toString() {
-        return "Faculty Profile [Name: " + person.getName() + ", ID: " + person.getPersonId() + "]";
+    public String toString(){
+        return person.toString();
     }
-    
 
 }

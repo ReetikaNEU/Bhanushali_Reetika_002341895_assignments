@@ -24,12 +24,6 @@ public class CourseOffer {
         course = c;
         seatlist = new ArrayList();
     }
-    
-    private ArrayList<SeatAssignment> seatAssignments;
-
-    public ArrayList<SeatAssignment> getSeatAssignments() {
-        return seatAssignments;
-    }
      
     public void AssignAsTeacher(FacultyProfile fp) {
 
@@ -95,25 +89,9 @@ public class CourseOffer {
     public int getCreditHours(){
         return course.getCredits();
     }
-
-    public Course getCourse() {
-        return course;
+    @Override
+    public String toString(){
+        return course.toString();
     }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    public FacultyAssignment getFacultyassignment() {
-        return facultyassignment;
-    }
-
-    public void setFacultyassignment(FacultyAssignment facultyassignment) {
-        this.facultyassignment = facultyassignment;
-    }
-    
-    
-    
-    
 
 }
