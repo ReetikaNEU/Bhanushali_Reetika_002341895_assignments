@@ -107,4 +107,13 @@ public void addElectiveCourse(Course c){
         co.assignEmptySeat(cl);
 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }
