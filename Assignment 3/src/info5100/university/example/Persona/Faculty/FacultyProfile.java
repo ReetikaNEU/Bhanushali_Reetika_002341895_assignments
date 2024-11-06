@@ -58,4 +58,13 @@ public class FacultyProfile {
         return false;
     }
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+    
+
 }
