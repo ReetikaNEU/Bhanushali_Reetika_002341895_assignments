@@ -36,17 +36,17 @@ public class Info5001UniversityExample {
         Department department = new Department("Information Systems"); // one department
         PersonDirectory pd = department.getPersonDirectory();
         
-        Person p1 = pd.newPerson("person_1");
-        Person p2 = pd.newPerson("person_2");
-        Person p3 = pd.newPerson("person_3");
-        Person p4 = pd.newPerson("person_4");
-        Person p5 = pd.newPerson("person_5");
-        Person p6 = pd.newPerson("person_6");
-        Person p7 = pd.newPerson("person_7");
-        Person p8 = pd.newPerson("person_8");
-        Person p9 = pd.newPerson("person_9");
-        Person p10 = pd.newPerson("person_10");
-        Person p11 = pd.newPerson("person_11");
+        Person p1 = pd.newPerson("janvi");
+        Person p2 = pd.newPerson("kashish");
+        Person p3 = pd.newPerson("sonali");
+        Person p4 = pd.newPerson("priya");
+        Person p5 = pd.newPerson("unnati");
+        Person p6 = pd.newPerson("dhruvi");
+        Person p7 = pd.newPerson("tirth");
+        Person p8 = pd.newPerson("meet");
+        Person p9 = pd.newPerson("saloni");
+        Person p10 = pd.newPerson("dhruvi");
+        Person p11 = pd.newPerson("hritika");
         Person p12 = pd.newPerson("person_12");
         Person p13 = pd.newPerson("person_13");
         Person p14 = pd.newPerson("person_14");
@@ -72,11 +72,11 @@ public class Info5001UniversityExample {
 
 
         CourseCatalog coursecatalog = department.getCourseCatalog();
-        Course course = coursecatalog.newCourse("app eng", "info 5100", 1);
-        Course course1 = coursecatalog.newCourse("DMDW", "info 6100", 1);
-        Course course2 = coursecatalog.newCourse("OOD", "CSYE 6200", 1);
-        Course course3 = coursecatalog.newCourse("Data Science", "info 6150", 1);
-        Course course4 = coursecatalog.newCourse("Web Dev", "info 7100", 1);
+        Course course = coursecatalog.newCourse("application engineering", "info 5100", 1);
+        Course course1 = coursecatalog.newCourse("Database design", "info 6100", 1);
+        Course course2 = coursecatalog.newCourse("Python", "CSYE 6200", 1);
+        Course course3 = coursecatalog.newCourse("Cyber security", "info 6150", 1);
+        Course course4 = coursecatalog.newCourse("Java", "info 7100", 1);
         Course course5 = coursecatalog.newCourse("Data Structures", "CS 4500", 1);
         Course course6 = coursecatalog.newCourse("Program Design Paradigm", "CS 5800", 1);
         Course course7 = coursecatalog.newCourse("Algorithms", "CS 5001", 1);
@@ -205,9 +205,9 @@ public class Info5001UniversityExample {
 
         
         
-         System.out.println("---------------------------- Report For Fall 2024 Semester -----------------------------");
+         System.out.println("************************* Report For Fall 2024 Semester ***************************");
         for(StudentProfile sp: sd.getStudentProfiles()){
-            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("===============================================================================");
             try{
                 System.out.println("Student Name : " + sp + "\n");
                 System.out.println("Course Number - Faculty - Score - Course Price\n");
@@ -223,7 +223,7 @@ public class Info5001UniversityExample {
             }catch(NullPointerException e){
                 System.out.println("Not registered for any courses");
             }
-            System.out.println("-------------------------------------------------------------------------------------");
+            System.out.println("#################################################################################");
         }
     
 
