@@ -66,5 +66,10 @@ public class FacultyProfile {
         this.person = person;
     }
     
+    @Override
+    public String toString() {
+        return "Faculty Profile [Name: " + person.getName() + ", ID: " + person.getPersonId() + "]";
+    }
+    
 
 }
